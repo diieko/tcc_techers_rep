@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Just Another CPS Tester</title>
+    <style>
+        body{
+            background-color: rgb(39, 31, 31);
+        }
+        #clickble {
+        height: 300px;
+        width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: rgb(146, 144, 144);}
+        #clickble:active {background-color: rgb(167, 166, 166)}
+
+        #clicks {
+            color: rgb(114, 113, 113);
+        }
+
+        #clock{
+            color: rgb(114, 113, 113);
+        }
+
+        .cpstesth1{
+            color: rgb(114, 113, 113);
+        }
+    </style>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h1 class="cpstesth1">CPS Test</h1>
+    <h1 id="clicks">0</h1>
+    <div>
+        <div id="clock">
+        <span id="seconds">5</span>
+    </div>
+    <div id="clickble">
+    </div>
+    </div>
+    <div id="buttons">
+        <button class="botao-de-tempo">1 Second Test</button>
+        <button class="botao-de-tempo">2 Seconds Test</button>
+        <button class="botao-de-tempo">5 Seconds Test</button>
+        <button class="botao-de-tempo">10 Seconds Test</button>
+        <button class="botao-de-tempo">30 Seconds Test</button>
+        <button class="botao-de-tempo">60 Seconds Test</button>
+        <button class="botao-de-tempo">100 Seconds Test</button>
+        <!-- <button class="botao-de-tempo">0,00000000001 Seconds Test</button> -->
+    </div>
+    <div class="videopai">
+        <div id="videos">
+            <iframe width="540" height="300" src="https://www.youtube.com/embed/6pYX3UcICvQ" title="How to Drag Click [3 Methods] | Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="540" height="300" src="https://www.youtube.com/embed/UjCXdmczIdI" title="How To Butterfly Click 20 CPS" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="540" height="300" src="https://www.youtube.com/embed/U4Znb0QejSw" title="how to jitterclick (tutorial)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+    <script>
+
+        let tempo = 5
+        let numeroDeClicks = 0
+        var indicadorDeClicks = false
+        var caboOTimer = false
+        var tempoInicial = 5
+
+        document.querySelector ("#clickble").addEventListener("click",()=>{
+            
+            if (indicadorDeClicks===false) {
+            indicadorDeClicks=true
+            countdown()     
+            }
+            if (caboOTimer===false){
+            numeroDeClicks++
+            }
+            document.querySelector("#clicks").innerText = numeroDeClicks
+        })
+        document.querySelectorAll (".botao-de-tempo").forEach((botao)=>{
+            botao.addEventListener("click", ()=>{
+                if (caboOTimer===true||indicadorDeClicks===false){
+                tempo = parseInt (botao.innerHTML.split(" ")[0])
+                tempoInicial = tempo
+                document.querySelector("#seconds").innerText = tempo
+            }
+            
+            })
+        })
+
+        function countdown() {
+            
+            //document.getElementById("seconds").innerHTML = String( timeLeft );
+            if (tempo <= 0) {
+                console.log(numeroDeClicks); 
+                document.querySelector("#seconds").innerText = "0"
+                caboOTimer = false
+                indicadorDeClicks = false
+                tempo = tempoInicial
+                alert("U Clicked "+numeroDeClicks/tempoInicial+" Clicks Per Seconds")
+                numeroDeClicks = 0
+                
+            }else{
+                //para a conta
+                setTimeout(countdown, 10);
+                tempo-= 0.01;
+                document.querySelector("#seconds").innerText = tempo.toFixed(2);
+            }
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <script src="login.js"></script>
+    <title>Tela de Login - Espaço</title>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="login-form" method="get" action="/Principal">
+            <label for="username">Usuário:</label>
+            <input type="text" id="username" required>
+            <label for="password">Senha:</label>
+            <input type="password" id="password" required>
+            <button type="submit" id="enviar" onsubmit="funcaoLink()">Entrar</button>
+            <!-- <script>
+                <input type="submit" onclick="funcaoLink()" value="Entrar">
+                function funcaoLink() {
+                    window.location.href="index.html"
+            </script> -->
+        </form>
+        <p id="error-message" class="error-message"></p>
+    </div>
+  
+</body> 
+</html>
